@@ -1,4 +1,3 @@
-setwd("D:/edvancer/r files/Data/retail/")
 ci_train=read.csv("store_train.csv",stringsAsFactors = FALSE)
 ci_test=read.csv("store_test.csv",stringsAsFactors = FALSE)
 ci_test$store=NA
@@ -138,7 +137,7 @@ ci.rf.final=randomForest(store~.-Id,
 
 test.score=predict(ci.rf.final,newdata = ci_test,type='prob')[,2]
 
-write.csv(test.score,'Kavya_G_P2_part2.csv',row.names = F)     
+write.csv(test.score,'Results1.csv',row.names = F)     
 
 ci.rf.final
 
@@ -186,5 +185,5 @@ test.predicted=as.numeric(test.score>my_cutoff)
 final.test.prediction = as.character(test.predicted == 1)
 final.test.prediction = gsub("FALSE","No",final.test.prediction)
 final.test.prediction = gsub("TRUE","Yes",final.test.prediction)
-write.csv(final.test.prediction,"Kavya_G_P5_part2.csv",row.names = F)
+write.csv(final.test.prediction,"Results2.csv",row.names = F)
 table(final.test.prediction)
